@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="PageObjectExampleTest" verbose="5" >
+    <parameter name="browserName" value="firefox"/>  <!-- передаємо значення який браузер буде ранитись в клас TestBase -->
+    <test name="TestLQAS">
+        <classes>
+            <class name="tests"/>  <!-- потрібно вказати з якого пекеджу і який тестовий клас потрібно ранити -->
+        </classes>
+    </test>
+</suite>
