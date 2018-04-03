@@ -46,6 +46,8 @@ public class WebDriverFactory {
 
             } else if (FIREFOX.equalsIgnoreCase(browserName)) {
 
+                setFirefoxDriver();
+
                 FirefoxProfile fp = new FirefoxProfile();
                 dc = DesiredCapabilities.firefox();
                 dc.setCapability("marionette", false);
@@ -85,32 +87,31 @@ public class WebDriverFactory {
         StringBuffer chromeBinaryPath = new StringBuffer(
                 "src/main/resources/drivers/");
         if (osName.startsWith("win")) {
-            chromeBinaryPath.append("chromedriver.exe");
+            chromeBinaryPath.append("win/chromedriver.exe");
         } else if (osName.startsWith("lin")) {
-            chromeBinaryPath.append("chromedriver");
+            chromeBinaryPath.append("lin/chromedriver");
         } else if (osName.startsWith("mac")) {
-            chromeBinaryPath.append("chromedriver");
+            chromeBinaryPath.append("mac/chromedriver");
         } else
             throw new Exception("Your OS is invalid for webdriver tests");
         System.setProperty("webdriver.chrome.driver",
                 chromeBinaryPath.toString());
     }
-/*
+
     private static void setFirefoxDriver() throws Exception {
 
         String osName = System.getProperty("os.name").toLowerCase();
         StringBuffer firefoxBinaryPath = new StringBuffer(
-                "src/main/resources/drivers/gecko/");
+                "src/main/resources/drivers/");
         if (osName.startsWith("win")) {
-            firefoxBinaryPath.append("gecko-win/geckodriver.exe");
+            firefoxBinaryPath.append("win/geckodriver.exe");
         } else if (osName.startsWith("lin")) {
-            firefoxBinaryPath.append("gecko-lin/geckodriver");
+            firefoxBinaryPath.append("lin/geckodriver");
         } else if (osName.startsWith("mac")) {
-            firefoxBinaryPath.append("gecko-mac/geckodriver");
+            firefoxBinaryPath.append("mac/geckodriver");
         } else
             throw new Exception("Your OS is invalid for webdriver tests");
         System.setProperty("webdriver.gecko.driver",
                 firefoxBinaryPath.toString());
     }
-*/
 }
